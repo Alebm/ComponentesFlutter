@@ -1,4 +1,5 @@
 // para hacer una especie de rutas globales,
+import 'package:componentesflutter/screens/infiniti_scroll.dart';
 import 'package:flutter/material.dart';
 
 import 'package:componentesflutter/models/menu_option.dart';
@@ -62,6 +63,12 @@ class AppRoutes {
       icon: Icons.social_distance_rounded,
       name: 'Slider Screen and Check',
       screen: const SliderScreen(),
+    ),
+    MenuOption(
+      route: 'infinityscroll',
+      icon: Icons.info,
+      name: 'Infinity Scroll',
+      screen: const InfinityScrollScreen(),
     ),
   ];
 
