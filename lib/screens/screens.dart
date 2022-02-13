@@ -9,3 +9,4 @@ export 'package:componentesflutter/screens/avatar_screen.dart';
 export 'package:componentesflutter/screens/container_screen.dart';
 export 'package:componentesflutter/screens/inputs_screen.dart';
 export 'package:componentesflutter/screens/slider_screen.dart';
+export 'package:componentesflutter/screens/infiniti_scroll.dart';

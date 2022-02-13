@@ -1,5 +1,4 @@
 // para hacer una especie de rutas globales,
-import 'package:componentesflutter/screens/infiniti_scroll.dart';
 import 'package:flutter/material.dart';
 
 import 'package:componentesflutter/models/menu_option.dart';
