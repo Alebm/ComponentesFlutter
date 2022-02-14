@@ -61,6 +61,14 @@ class _InfinityScrollScreenState extends State<InfinityScrollScreen> {
     setState(() {});
   }
 
+  Future<void> onRefresh() async {
+    await Future.delayed(const Duration(seconds: 2));
+    final lastId = imagesIDs.last;
+    imagesIDs.clear();
+    imagesIDs.add(lastId + 1);
+    add5();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -73,20 +81,24 @@ class _InfinityScrollScreenState extends State<InfinityScrollScreen> {
         removeBottom: true,
         child: Stack(
           children: [
-            ListView.builder(
-              controller: scrollController,
-              itemCount: imagesIDs.length,
-              itemBuilder: (BuildContext context, int index) {
-                return FadeInImage(
-                  width: double.infinity,
-                  height: 300,
-                  fit: BoxFit.cover,
-                  placeholder: const AssetImage('assets/img/jar-loading.gif'),
-                  image: NetworkImage(
-                      // imagesIDs[index] le paso el indice de la lista que cree antes
-                      'https://picsum.photos/500/300?image=${imagesIDs[index]}'),
-                );
-              },
+            RefreshIndicator(
+              color: AppTheme.primary,
+              onRefresh: onRefresh,
+              child: ListView.builder(
+                controller: scrollController,
+                itemCount: imagesIDs.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return FadeInImage(
+                    width: double.infinity,
+                    height: 300,
+                    fit: BoxFit.cover,
+                    placeholder: const AssetImage('assets/img/jar-loading.gif'),
+                    image: NetworkImage(
+                        // imagesIDs[index] le paso el indice de la lista que cree antes
+                        'https://picsum.photos/500/300?image=${imagesIDs[index]}'),
+                  );
+                },
+              ),
             ),
             if (isloading)
               Positioned(
